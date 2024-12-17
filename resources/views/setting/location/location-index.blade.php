@@ -39,5 +39,5 @@
 @endsection
 
 @push('js')
-    <script src="{{ asset('hris/setting/location.js') }}"></script>
+    <script src="{{ asset('oppd/setting/location.js') }}"></script>
 @endpush

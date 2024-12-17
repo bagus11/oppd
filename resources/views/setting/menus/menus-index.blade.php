@@ -4,7 +4,7 @@
         <!-- Menus Section -->
         <div class="col-12 col-md-6">
             <div class="card">
-                <div class="card-header bg-primary">
+                <div class="card-header">
                     <div class="row">
                         <div class="col-9">
                             <strong>Menus</strong>
@@ -38,7 +38,7 @@
         <!-- Submenus Section -->
         <div class="col-12 col-md-6">
             <div class="card">
-                <div class="card-header bg-primary">
+                <div class="card-header">
                     <div class="row">
                         <div class="col-9">
                             <strong>Submenus</strong>
@@ -76,5 +76,5 @@
 @endsection
 
 @push('js')
-    <script src="{{ asset('hris/setting/menus/menus.js') }}"></script>
+    <script src="{{ asset('oppd/setting/menus/menus.js') }}"></script>
 @endpush

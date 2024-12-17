@@ -13,7 +13,7 @@
                 <a href="javascript:void(0)" data-bs-toggle="tooltip"
                     data-bs-custom-class="custom-tooltip" data-bs-placement="right"
                     data-bs-title="{{ $module->name }}">
-                    <iconify-icon icon="solar:{{ $module->icon }}" class="fs-7"></iconify-icon>
+                    <iconify-icon icon="{{ $module->icon }}" class="fs-7"></iconify-icon>
                 </a>
             </li>
         @endforeach
@@ -23,7 +23,7 @@
 <div class="sidebarmenu">
     <div class="brand-logo d-flex align-items-center nav-logo">
         <a href="{{ route('home') }}" class="text-nowrap logo-img">
-            <img src="{{ asset('assets/images/logos/logo.svg') }}" alt="Logo" />
+            <img src="{{ asset('assets/images/logos/logo.png') }}" style="width:50px" alt="Logo" /> <b>SISINFOLOG OPPD</b>
         </a>
     </div>
 
@@ -42,9 +42,9 @@
 
                 @foreach ($submodules as $submodule)
                     <li class="nav-small-cap">
-                        <span class="hide-menu">{{ $submodule->name }}</span>
+                        <strong class="hide-menu">{{ $submodule->name }}</strong>
+                        <hr>
                     </li>
-
                     @php
                       $menuItems = DB::table('menus')
                                         ->select('menus.id', 'menus.name', 'menus.type', 'menus.permission', 'menus.status', 'menus.submodule_code','menus.link','menus.icon') // List all required columns
@@ -63,14 +63,14 @@
                         @if ($menu->type == 1 )
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="{{$menu->link}}" aria-expanded="false">
-                                <iconify-icon icon="solar:{{ $menu->icon }}"></iconify-icon>
+                                <iconify-icon icon="{{ $menu->icon }}"></iconify-icon>
                                 <span class="hide-menu">{{ $menu->name }}</span>
                             </a>
                         </li>
                         @else
                         <li class="sidebar-item">
                             <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
-                                <iconify-icon icon="solar:{{$menu->icon}}"></iconify-icon>
+                                <iconify-icon icon="{{$menu->icon}}"></iconify-icon>
                                 <span class="hide-menu">{{$menu->name}}</span>
                             </a>
                             <ul aria-expanded="false" class="collapse first-level">
@@ -87,11 +87,13 @@
                                                 ->groupBy('submenus.link','submenus.name','submenus.id','submenus.logo')
                                                 ->get();
                                 @endphp
+                                {{-- {{$submenu}} --}}
                                 @foreach ($submenu as $sub)
                                 <li class="sidebar-item">
                                     <a class="sidebar-link" href="{{$sub->link}}">
-                                        <iconify-icon icon="{{$sub->logo}}"></iconify-icon>
-                                        <span class="hide-menu"></span> {{$sub->name}}
+                                        {{-- <iconify-icon icon="{{$sub->logo}}"></iconify-icon> --}}
+                                        <span class="icon-small"></span>
+                                         {{$sub->name}}
                                     </a>
                                 </li>
                                 @endforeach

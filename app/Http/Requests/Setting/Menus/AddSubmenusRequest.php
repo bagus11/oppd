@@ -24,7 +24,7 @@ class AddSubmenusRequest extends FormRequest
         return [
             'submenus_name'                => 'required',
             'submenus_link'                => 'required',
-            'submenus_icon'                => 'required',
+            // 'submenus_icon'                => 'required',
             'parent'                       => 'required',
             'submenus_description'         => 'required'
         ];

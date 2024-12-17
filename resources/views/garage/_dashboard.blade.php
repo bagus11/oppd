@@ -18,6 +18,9 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="{{ asset('assets/select2/select2.min.css') }}" rel="stylesheet">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" integrity="sha512-Zcn6bjR/8RZbLEpLIeOwNtzREBAJnUKESxces60Mpoj+2okopSAcSUIUOseddDm0cxnGQzxIR7vJgsLZbdLE3w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha512-h9FcoyWjHcOcmEVkxOfTLnmZFWIH0iZhZT1H2TbOq55xssQGEJHEaIm+PgoUaZbRvQTNTluNOEfb1ZRy6D3BOw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <style>
@@ -75,13 +78,59 @@
     height: 35px !important;
     font-size: 12px !important;
     }
+    .select2-container{
+        z-index:100000 !important;
+    }
     .toast {
     font-size: 12px !important;
     
     }
-    .select2-container{
-        z-index:100000 !important;
+    .dataTables_wrapper .dataTables_paginate {
+        margin: 10px 0 !important;
     }
+    .table-responsive {
+        overflow-x: auto; /* Enable horizontal scrolling */
+    }
+
+
+
+
+    .select2_dashboard{
+        width: 100% !important;
+        font-size:12px;
+    }
+    .select2_dashboard-selection__rendered {
+        line-height: 30px !important;
+        font-size:12px;
+    }
+    .select2_dashboard-container .select2-selection--single {
+        height: 35px !important;
+        font-size:12px;
+    }
+    .select2-selection__arrow {
+        height: 34px !important;
+        font-size:12px !important;
+    }
+    .select2-dropdown{
+    font-size: 12px !important;
+    }
+    .selectOption2{
+    font-size: 12px !important;
+    }
+    .select2-dropdown--below{
+    font-size: 12px !important;
+    }
+    .select2-results__option{
+    font-size: 12px !important;
+    }
+    .select2-search__field{
+    height: 35px !important;
+    font-size: 12px !important;
+    }
+    .select2-hidden-accessible{
+        z-index:10 !important;
+    }
+    
 </style>
 <body>
 
@@ -844,11 +893,11 @@
 
     <!-- solar icons -->
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-    {{-- <script src="{{ asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script> --}}
-    {{-- <script src="{{ asset('assets/js/dashboards/dashboard1.js') }}"></script> --}}
+    {{-- <script src="{{ asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></das --}}
     <script src="{{ asset('assets/libs/fullcalendar/index.global.min.js') }}"></script>
     <script src="{{ asset('assets/sweetalert2/sweetalert.min.js') }}"></script>
     <script src="{{ asset('assets/select2/select2.full.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" integrity="sha512-BwHfrr4c9kmRkLw6iXFdzcdWV/PGkVgiIyIWLLlTSXzWQzxuSg4DiQUCpauz/EWjgk5TYQqX/kvn9pG1NpYfqg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
     <script>
         $('.customizer-btn').prop('hidden', true)
@@ -866,10 +915,8 @@
           }
          $(document).ready(function(){
                 $(".select2").select2();
+                $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},})
                 $('.select2').select2({ dropdownCssClass: "selectOption2" });
-                $.ajaxSetup({
-                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                })
             })
           $(".select2").select2({ width: '300px', dropdownCssClass: "bigdrop" });
           toastr.options = {

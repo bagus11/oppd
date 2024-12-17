@@ -44,7 +44,7 @@
                         <label for="menus_link_edit">Link</label>
                     </div>
                     <div class="col-8 mb-2">
-                        <input type="text" name="menus_link_edit" id="menus_link_edit" class="form-control">
+                        <input type="text" name="menus_link_edit" id="menus_link_edit" class="form-control" disabled readonly>
                         <span class="message_error menus_link_edit_error text-red block"></span>
                     </div>
                     

@@ -72,5 +72,5 @@
 @endsection
 
 @push('js')
-    <script src="{{ asset('hris/setting/user_access/user_access.js') }}"></script>
+    <script src="{{ asset('oppd/setting/user_access/user_access.js') }}"></script>
 @endpush

@@ -1,5 +1,5 @@
 
-<div class="modal fade" id="addRoleUserModal" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="addRoleUserModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-md modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">

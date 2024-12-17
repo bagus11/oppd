@@ -351,10 +351,12 @@
                                         <a href="javascript:void(0)" class="p-2 dropdown-item h6 rounded-1">
                                             Account Settings
                                         </a>
-                                        <a href="{{ route('home') }}"
-                                            class="p-2 dropdown-item h6 rounded-1">
-                                            Sign Out
-                                        </a>
+                                        <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item dropdown-footer">
+                                       Log Out</a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
                                     </div>
                                 </div>
                             </div>

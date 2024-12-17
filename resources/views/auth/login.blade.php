@@ -29,14 +29,9 @@
           <div class="col-lg-4 col-xl-5 col-xxl-4">
             <div class="min-vh-100 bg-body row justify-content-center align-items-center p-5">
               <div class="col-12 auth-card">
-                <div class="row mb-4">
-                    <div class="col-2">
-                        <a href="../main/index.html" class="text-nowrap logo-img d-block w-100">
-                          <img src="../assets/images/logos/logo-icon.svg" class="dark-logo" alt="Logo-Dark" />
-                        </a>
-                    </div>
-                    <div class="col-8">
-                        <strong style="font-size: 24px; color:black">Login</strong>
+                <div class="row mb-4 justify-content-center">
+                    <div class="col-12">
+                        <strong style="font-size: 20px; color:black">Login</strong>
                     </div>
                 </div>
                 <form method="POST" action="{{ route('login') }}">
@@ -88,16 +83,18 @@
             </div>
             <div class="d-lg-flex align-items-center z-index-5 position-relative h-n80">
               <div class="row justify-content-center w-100">
-                <div class="col-lg-6">
+                <div class="col-3 mt-2">
+                  <a href="../main/index.html" class="text-nowrap mt-4 logo-img d-block w-200">
+                    <img src="../assets/images/logos/logo.png" class="dark-logo" alt="Logo-Dark"  style="width: 100%;"/>
+                  </a>
+                </div>
+                <div class="col-lg-7">
                   <h2 class="text-white fs-10 mb-3 lh-base">
-                    Welcome to
-                    <br />
-                    HRIS
+                    SISINFOLOG OPPD
                   </h2>
-                  <span class="opacity-75 fs-4 text-white d-block mb-3">MatDash helps developers to build organized
-                    and well
+                  <span class="opacity-75 fs-4 text-white d-block mb-3">Sistem Informasi Logistik
                     <br />
-                    coded dashboards full of beautiful and rich modules.
+                    Sistem berbasis teknologi informasi yang dirancang untuk mengelola dan mengintegrasikan berbagai kegiatan logistik, seperti perencanaan, pengadaan, penyimpanan, pendistribusian, pemeliharaan, dan pelaporan aset atau barang dalam suatu organisasi atau perusahaan.
                   </span>
                 
                 </div>

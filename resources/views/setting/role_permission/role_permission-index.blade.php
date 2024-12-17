@@ -70,5 +70,5 @@
 @endsection
 
 @push('js')
-    <script src="{{ asset('hris/setting/role_permission/role_permission.js') }}"></script>
+    <script src="{{ asset('oppd/setting/role_permission/role_permission.js') }}"></script>
 @endpush

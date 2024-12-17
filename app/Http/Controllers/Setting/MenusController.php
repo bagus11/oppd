@@ -42,7 +42,7 @@ class MenusController extends Controller
             $addMenusRequest->validated();
             $post =[
                 'name'          => $request->menus_name,
-                'link'          => $request->menus_type == 1 ? $request->menus_link :'',
+                'link'          => $request->menus_link,
                 'type'          => $request->menus_type,
                 'icon'          => $request->menus_icon,
                 'permission'    => 'view-'.$request->menus_link,
@@ -111,7 +111,8 @@ class MenusController extends Controller
                 'name'          => $request->submenus_name,
                 'link'          =>  $request->submenus_link ,
                 'menus_id'      => $request->parent,
-                'logo'          => $request->submenus_icon,
+                // 'logo'          => $request->submenus_icon,
+                'logo'          => '',
                 'permission'    => 'view-'.$request->submenus_link,
                 'description'   => $request->submenus_description,
                 'status'        => 1

@@ -13,16 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/home', function () {
-        return view('layouts.app');
-    })->name('home');    
+ 
+        Route::get('/', 'App\Http\Controllers\HomeController@index');
+   
+   
+        Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
+   
     // Setting
         // General 
             Route::post('changeDarkTheme', 'App\Http\Controllers\Setting\SettingController@changeDarkTheme')->name('changeDarkTheme');
@@ -65,26 +65,30 @@ Route::group(['middleware' => 'auth'], function () {
 
         // User Access
 
-        // Company
-        Route::get('/company', 'App\Http\Controllers\Setting\CompanyController@index')->name('company');
-        Route::get('/getCompany', 'App\Http\Controllers\Setting\CompanyController@getCompany')->name('getCompany');
-        Route::get('/getCompanyLevel', 'App\Http\Controllers\Setting\CompanyController@getCompanyLevel')->name('getCompanyLevel');
-        Route::get('/getCompanyType', 'App\Http\Controllers\Setting\CompanyController@getCompanyType')->name('getCompanyLevel');
-        
-        // Company
-
-        // Location
-            Route::get('/location', 'App\Http\Controllers\Setting\LocationController@index')->name('location');
-            Route::get('/getLocation', 'App\Http\Controllers\Setting\LocationController@getLocation')->name('getLocation');
-            Route::post('/addLocation', 'App\Http\Controllers\Setting\LocationController@addLocation')->name('addLocation');
-        // Location
-
+        // Employee
+        Route::get('/master_user', 'App\Http\Controllers\Setting\UserController@index')->name('master_user');
+        Route::get('/getUser', 'App\Http\Controllers\Setting\UserController@getUser')->name('getUser');
+        // Employee
     // Setting
 
-
-    // Employee
-    
-            Route::get('/employee_information', 'App\Http\Controllers\Master\EmployeeController@index')->name('employee_information');
-            Route::get('/getEmployee', 'App\Http\Controllers\Master\EmployeeController@getEmployee')->name('getEmployee');
-    // Employee
+    // Dashboard
+        Route::get('/getCountingAsset', 'App\Http\Controllers\HomeController@getCountingAsset')->name('getCountingAsset');
+        Route::get('/assetChart', 'App\Http\Controllers\HomeController@assetChart')->name('assetChart');
+        Route::get('/assetChartFilter', 'App\Http\Controllers\HomeController@assetChartFilter')->name('assetChartFilter');
+        // Dashboard
+        
+        // Transaction
+        // Asset
+            Route::get('/inventory_condition', 'App\Http\Controllers\Transaction\Asset\AssetController@index')->name('inventory_condition');
+            Route::get('/inventory', 'App\Http\Controllers\Transaction\Asset\AssetController@index')->name('inventory');
+            Route::get('/inventory_transaction', 'App\Http\Controllers\Transaction\Asset\AssetController@index')->name('inventory_transaction');
+            Route::get('/getAsset', 'App\Http\Controllers\Transaction\Asset\AssetController@getAsset')->name('getAsset');
+            Route::get('/getPengajuanAsset', 'App\Http\Controllers\Transaction\Asset\AssetController@getPengajuanAsset')->name('getPengajuanAsset');
+            Route::get('/getPengajuanAssetFilter', 'App\Http\Controllers\Transaction\Asset\AssetController@getPengajuanAssetFilter')->name('getPengajuanAssetFilter');
+            Route::get('/getAssetFilter', 'App\Http\Controllers\Transaction\Asset\AssetController@getAssetFilter')->name('getAssetFilter');
+            Route::get('/getMasterSatgas', 'App\Http\Controllers\Transaction\Asset\AssetController@getMasterSatgas')->name('getMasterSatgas');
+            Route::post('/addAsset', 'App\Http\Controllers\Transaction\Asset\AssetController@addAsset')->name('addAsset');
+        
+        // Asset
+    // Transaction
 });

@@ -23,7 +23,7 @@ class UpdateMenusRequest extends FormRequest
     {
         return [
             'menus_name_edit'                => 'required',
-            'menus_link_edit'                => 'required',
+            // 'menus_link_edit'                => 'required',
             'menus_icon_edit'                => 'required',
             'menus_type_edit'                => 'required',
             'menus_description_edit'         => 'required'
