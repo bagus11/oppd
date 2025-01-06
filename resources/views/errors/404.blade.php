@@ -41,21 +41,24 @@
           <div class="light"></div>
         </div>
       </div>
-      <!-- END Lamp -->
-      <section class="error">
-        <!-- Content -->
+    <section class="error">
         <div class="error__content">
-          <div class="error__message message">
-            <h1 class="message__title">Page Not Found</h1>
-            <p class="message__text">We're sorry, the page you were looking for isn't found here. The link you followed may either be broken or no longer exists. Please try again, or take a look at our.</p>
-          </div>
-          <div class="error__nav e-nav">
-            <a href="home" target="_blanck" class="e-nav__link"></a>
-          </div>
+            <div class="error__message message">
+                @php
+                    $currentPath = Request::path();
+                    $pageName = ucwords(str_replace('_', ' ', $currentPath));
+                @endphp
+
+                <h1 class="message__title">404 - {{ $pageName }}</h1>
+                <p class="message__text">
+                    Sorry, the page "{{ $pageName }}" still under Deployment.
+                </p>
+            </div>
+            <div class="error__nav e-nav">
+                <a href="{{ url('/') }}" class="e-nav__link">Back to Home</a>
+            </div>
         </div>
-        <!-- END Content -->
-      
-      </section>
+    </section>
       
         </a>
 </body>
@@ -272,6 +275,7 @@ button {
   font-family: 'Montserrat', sans-serif;
   line-height: 42px;
   font-size: 18px;
+  color: white !important;
   padding: 0 60px;
   max-width: 680px;
   margin: auto;

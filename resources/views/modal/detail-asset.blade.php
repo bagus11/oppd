@@ -18,6 +18,7 @@
                                 <th>Merk</th>
                                 <th>No Mesin</th>
                                 <th>No Rangka</th>
+                                <th>Kondisi</th>
                             </tr>
                         </thead>
                     </table>

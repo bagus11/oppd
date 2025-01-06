@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Transaction\Asset;
 
 use App\Helper\ResponseFormatter;
 use App\Http\Controllers\Controller;
+use App\Models\Master\Asset;
 use App\Models\Master\MasterAsset;
 use App\Models\Setting\MasterSatgas;
 use Illuminate\Http\Request;
@@ -40,10 +41,16 @@ class AssetController extends Controller
     public function getAssetFilter(Request $request)
     {
         if ($request->ajax()) {
-            $data =  DB::table('master_assets as a')->select('a.*')
-            ->join('master_satgas as b','a.satgas','b.name')
-            ->where('b.type', $request->type)
-            // ->groupBy('a.kondisi')
+            $data = Asset::with([
+                'categoryRelation',
+                'subCategoryRelation',
+                'typeRelation',
+                'merkRelation',
+                'satgasRelation',
+            ])
+            ->whereHas('satgasRelation', function ($query) use ($request) {
+                $query->where('type', $request->type);
+            })
             ->get();
     
             return DataTables::of($data)->make(true);

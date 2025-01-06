@@ -88,7 +88,7 @@
                 data : data,
                 success: function(response) {
                     $('#'+id).empty()
-                    $('#'+id).append('<option value ="">Choose '+ name +'</option>');
+                    $('#'+id).append('<option value ="">Pilih '+ name +'</option>');
                     $.each(response.data,function(i,data){
                         $('#'+id).append('<option data-name="'+ data.name +'" value="'+data.id+'">' + data.name +'</option>');
                     });
@@ -97,6 +97,9 @@
                     toastr['error']('Failed to get data, please contact Developer');
                 }
             });   
+    }
+    function resetSelect2(id) {
+        $('#'+id).val('').trigger('change');  // Clear value and trigger change
     }
     function getActiveItemTransaction(url,data,id,name){
         $.ajax({
@@ -148,6 +151,7 @@
     }
     
     function postCallback(route,data,callback){
+        $('.message_error').html('')
         $.ajax({
             url: route,
             type: "post",

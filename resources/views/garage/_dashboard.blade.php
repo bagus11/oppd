@@ -17,7 +17,7 @@
     <title>{{ env('APP_NAME') }}</title>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link href="{{ asset('assets/select2/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/select2/select2.min.css') }}" rel="stylesheet">
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" integrity="sha512-Zcn6bjR/8RZbLEpLIeOwNtzREBAJnUKESxces60Mpoj+2okopSAcSUIUOseddDm0cxnGQzxIR7vJgsLZbdLE3w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha512-h9FcoyWjHcOcmEVkxOfTLnmZFWIH0iZhZT1H2TbOq55xssQGEJHEaIm+PgoUaZbRvQTNTluNOEfb1ZRy6D3BOw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -25,14 +25,14 @@
 </head>
 <style>
     label{
-        font-size: 12px !important
+        font-size: 10px !important
     }
     .message_error{
         color: red;
         font-size: 10px !important;
     }
     p{
-        font-size: 12px !important
+        font-size: 10px !important
     }
     .card-header.bg-primary{
         color: white;
@@ -48,41 +48,44 @@
     }
     .select2{
         width: 100% !important;
-        font-size:12px;
+        font-size:10px;
     }
     .select2-selection__rendered {
         line-height: 30px !important;
-        font-size:12px;
+        font-size:10px;
     }
     .select2-container .select2-selection--single {
         height: 35px !important;
-        font-size:12px;
+        font-size:10px;
     }
     .select2-selection__arrow {
         height: 34px !important;
-        font-size:12px !important;
+        font-size:10px !important;
     }
     .select2-dropdown{
-    font-size: 12px !important;
+    font-size: 10px !important;
     }
     .selectOption2{
-    font-size: 12px !important;
+    font-size: 10px !important;
     }
     .select2-dropdown--below{
-    font-size: 12px !important;
+    font-size: 10px !important;
     }
     .select2-results__option{
-    font-size: 12px !important;
+    font-size: 10px !important;
     }
-    .select2-search__field{
-    height: 35px !important;
-    font-size: 12px !important;
-    }
+    .select2-search__field {
+    display: block !important;
+    width: 100% !important;   /* Make sure the search field takes full width */
+    height: auto !important;  /* Ensure it's not too small */
+    padding: 5px 10px;        /* Adjust padding for better visibility */
+    font-size: 10px;          /* Adjust font size */
+}
     .select2-container{
         z-index:100000 !important;
     }
     .toast {
-    font-size: 12px !important;
+    font-size: 10px !important;
     
     }
     .dataTables_wrapper .dataTables_paginate {
@@ -92,48 +95,142 @@
         overflow-x: auto; /* Enable horizontal scrolling */
     }
 
-
-
+    .myFont{
+      font-size:10px !important
+    }
+    .selectOption2{
+            font-size: 9px !important;
+    }
 
     .select2_dashboard{
         width: 100% !important;
-        font-size:12px;
+        font-size:10px;
     }
     .select2_dashboard-selection__rendered {
         line-height: 30px !important;
-        font-size:12px;
+        font-size:10px;
     }
     .select2_dashboard-container .select2-selection--single {
         height: 35px !important;
-        font-size:12px;
+        font-size:10px;
     }
     .select2-selection__arrow {
         height: 34px !important;
-        font-size:12px !important;
+        font-size:10px !important;
     }
     .select2-dropdown{
-    font-size: 12px !important;
+    font-size: 10px !important;
     }
     .selectOption2{
-    font-size: 12px !important;
+    font-size: 10px !important;
     }
     .select2-dropdown--below{
-    font-size: 12px !important;
+    font-size: 10px !important;
     }
     .select2-results__option{
-    font-size: 12px !important;
+    font-size: 10px !important;
     }
-    .select2-search__field{
-    height: 35px !important;
-    font-size: 12px !important;
-    }
+
     .select2-hidden-accessible{
         z-index:10 !important;
     }
+    form-control{
+        font-size: 10px !important;
+    }
+    label{
+        font-size: 10px !important;
+    }
+    fieldset {
+        border: 1px solid#ddd;
+        font-family: Poppins !important;
+        border-radius: 15px !important;
+        padding: 10px;
+    }
+    legend {
+    font-size: 12px;
+    padding: 0px 20px;
+    margin-top: -20px !important;
+    font-weight: bold !important;
+    width: auto; /* Allow the width to adjust dynamically */
+    min-width: 10%; /* Ensure a minimum width of 40% */
+    max-width: 100%; /* Prevent it from exceeding the parent container */
+    background-color: #179BAE !important;
+    color: white !important;
+    /* border-color: #179BAE !important; */
+    border-radius: 20px !important;
+}
+
+    input[type="date"] {
+        font-size: 10px !important;
+    }
+    input[type="file"] {
+        font-size: 10px !important;
+    }
+    input[type="text"] {
+        font-size: 10px !important;
+    }
+    textarea{
+        font-size: 10px !important;
+    }
+    .table{
+        
+        font-size: 10px !important;
+    }
+
+    .open\:bg-green-200[open] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(187 247 208 / var(--tw-bg-opacity));
+}
+.open\:bg-red-600[open] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+}
+.open\:bg-red-200[open] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
+
+}
+.open\:bg-amber-200[open] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(253 230 138 / var(--tw-bg-opacity));
+}
+th.details-control {
+  background-color: #04AA6D;
+  color: white;
+}
+td.details-control {
+    background: url('/assets/images/details_open.png') no-repeat center center;
+    cursor: alias;
+}
+
+tr.shown td.details-control {
+    background: url('/assets/images/details_close.png') no-repeat center center;
+}
+
+
+
+th.subdetails-control {
+  background-color: #04AA6D;
+  color: white;
+}
+td.subdetails-control {
+background: url('https://datatables.net/examples/resources/details_open.png') no-repeat center center;
+cursor: alias;
+}
+tr.shown td.subdetails-control {
+    background: url('https://datatables.net/examples/resources/details_close.png') no-repeat center center;
+}
+
+td.subdetails-click {
+    background: url('https://datatables.net/examples/resources/details_open.png') no-repeat center center;
+    cursor: alias;
+}
+tr.shown td.subdetails-click {
+    background: url('https://datatables.net/examples/resources/details_close.png') no-repeat center center;
+}
     
 </style>
-<body>
-
+<body>    
     <!-- Preloader -->
     <div class="preloader">
         <img src="{{ asset('assets/images/logos/favicon.png') }}" alt="loader" class="lds-ripple img-fluid" />
@@ -896,7 +993,7 @@
     {{-- <script src="{{ asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></das --}}
     <script src="{{ asset('assets/libs/fullcalendar/index.global.min.js') }}"></script>
     <script src="{{ asset('assets/sweetalert2/sweetalert.min.js') }}"></script>
-    <script src="{{ asset('assets/select2/select2.full.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/select2/select2.full.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" integrity="sha512-BwHfrr4c9kmRkLw6iXFdzcdWV/PGkVgiIyIWLLlTSXzWQzxuSg4DiQUCpauz/EWjgk5TYQqX/kvn9pG1NpYfqg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
     <script>
@@ -913,12 +1010,39 @@
                   }
               });
           }
-         $(document).ready(function(){
-                $(".select2").select2();
-                $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},})
-                $('.select2').select2({ dropdownCssClass: "selectOption2" });
+        //   $(document).ready(function() {
+            //     $.ajaxSetup({
+            //         headers: {
+            //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //         }
+            //     });
+
+            //     // Initialize Select2 with custom options
+            //     $(".select2").select2({
+            //         placeholder: 'Please select an option',  // Optional placeholder
+            //         allowClear: true,                       // Optional clear button
+            //         minimumInputLength: 1,                  // Enables searching when typing at least 1 character
+            //         width: '100%',                          // Full width
+            //         dropdownCssClass: 'myFont bigdrop',     // Custom CSS class for dropdown
+            //         // Ensures search field is editable
+            //         escapeMarkup: function (markup) {
+            //             return markup;
+            //         }
+            //     });
+            // });
+            $(document).ready(function(){
+             $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},})
+                // $(".select2").select2();
+                // $('.select2').select2({ dropdownCssClass: "selectOption2" });
+                // $(".select2").select2({ width: '300px', dropdownCssClass: "bigdrop" });
+                $(".select2").select2({
+                    dropdownCssClass: "selectOption2",
+                    tags: true,
+                    minimumResultsForSearch: 0
+                });
             })
-          $(".select2").select2({ width: '300px', dropdownCssClass: "bigdrop" });
+            $(".select2").select2({ width: '300px', dropdownCssClass: "bigdrop" });
+
           toastr.options = {
               "closeButton": false,
               "debug": false,

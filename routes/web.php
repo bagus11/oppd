@@ -17,8 +17,9 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
- 
-        Route::get('/', 'App\Http\Controllers\HomeController@index');
+        Route::get('/', function () {
+            return redirect('/home');
+        });
    
    
         Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
@@ -65,6 +66,13 @@ Route::group(['middleware' => 'auth'], function () {
 
         // User Access
 
+        // Master Satgas
+            
+            Route::get('/master_satgas', 'App\Http\Controllers\Setting\MasterSatgasController@index')->name('master_satgas');
+            Route::get('/getSatgasTable', 'App\Http\Controllers\Setting\MasterSatgasController@getSatgasTable')->name('getSatgasTable');
+            Route::post('/addSatgas', 'App\Http\Controllers\Setting\MasterSatgasController@addSatgas')->name('addSatgas');
+        // Master Satgas
+
         // Employee
         Route::get('/master_user', 'App\Http\Controllers\Setting\UserController@index')->name('master_user');
         Route::get('/getUser', 'App\Http\Controllers\Setting\UserController@getUser')->name('getUser');
@@ -75,20 +83,58 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/getCountingAsset', 'App\Http\Controllers\HomeController@getCountingAsset')->name('getCountingAsset');
         Route::get('/assetChart', 'App\Http\Controllers\HomeController@assetChart')->name('assetChart');
         Route::get('/assetChartFilter', 'App\Http\Controllers\HomeController@assetChartFilter')->name('assetChartFilter');
-        // Dashboard
+    // Dashboard
+
+    // Master
+        Route::get('/master_asset', 'App\Http\Controllers\Master\MasterAssetController@index')->name('master_asset');
+        Route::get('/getMasterAsset', 'App\Http\Controllers\Master\MasterAssetController@getMasterAsset')->name('getMasterAsset');
+        Route::get('/getInventoryCategory', 'App\Http\Controllers\Master\MasterAssetController@getInventoryCategory')->name('getInventoryCategory');
+        Route::get('/getInventorySubCategory', 'App\Http\Controllers\Master\MasterAssetController@getInventorySubCategory')->name('getInventorySubCategory');
+        Route::get('/getInventoryType', 'App\Http\Controllers\Master\MasterAssetController@getInventoryType')->name('getInventoryType');
+        Route::get('/getInventoryBrand', 'App\Http\Controllers\Master\MasterAssetController@getInventoryBrand')->name('getInventoryBrand');
+        Route::post('/addMasterAsset', 'App\Http\Controllers\Master\MasterAssetController@addMasterAsset')->name('addMasterAsset');
+        Route::get('/getLogAsset', 'App\Http\Controllers\Master\MasterAssetController@getLogAsset')->name('getLogAsset');
+        Route::get('/getSatgas', 'App\Http\Controllers\Master\MasterAssetController@getSatgas')->name('getSatgas');
+        Route::post('/updateAsset', 'App\Http\Controllers\Master\MasterAssetController@updateAsset')->name('updateAsset');
         
-        // Transaction
+    // Master
+        
+    // Transaction
         // Asset
             Route::get('/inventory_condition', 'App\Http\Controllers\Transaction\Asset\AssetController@index')->name('inventory_condition');
             Route::get('/inventory', 'App\Http\Controllers\Transaction\Asset\AssetController@index')->name('inventory');
-            Route::get('/inventory_transaction', 'App\Http\Controllers\Transaction\Asset\AssetController@index')->name('inventory_transaction');
+           
             Route::get('/getAsset', 'App\Http\Controllers\Transaction\Asset\AssetController@getAsset')->name('getAsset');
             Route::get('/getPengajuanAsset', 'App\Http\Controllers\Transaction\Asset\AssetController@getPengajuanAsset')->name('getPengajuanAsset');
             Route::get('/getPengajuanAssetFilter', 'App\Http\Controllers\Transaction\Asset\AssetController@getPengajuanAssetFilter')->name('getPengajuanAssetFilter');
             Route::get('/getAssetFilter', 'App\Http\Controllers\Transaction\Asset\AssetController@getAssetFilter')->name('getAssetFilter');
             Route::get('/getMasterSatgas', 'App\Http\Controllers\Transaction\Asset\AssetController@getMasterSatgas')->name('getMasterSatgas');
             Route::post('/addAsset', 'App\Http\Controllers\Transaction\Asset\AssetController@addAsset')->name('addAsset');
-        
         // Asset
+
+        // Inventaris Aset
+            Route::get('/asset_inventaris', 'App\Http\Controllers\Transaction\Asset\AssetInventarisController@index')->name('asset_inventaris');
+            Route::get('/getDetailAsset', 'App\Http\Controllers\Transaction\Asset\AssetInventarisController@getDetailAsset')->name('getDetailAsset');
+            Route::get('/getInventaris', 'App\Http\Controllers\Transaction\Asset\AssetInventarisController@getInventaris')->name('getInventaris');
+            Route::get('/getInventarisLog', 'App\Http\Controllers\Transaction\Asset\AssetInventarisController@getInventarisLog')->name('getInventarisLog');
+            Route::post('/addInventaris', 'App\Http\Controllers\Transaction\Asset\AssetInventarisController@addInventaris')->name('addInventaris');
+            Route::post('/updateInventaris', 'App\Http\Controllers\Transaction\Asset\AssetInventarisController@updateInventaris')->name('updateInventaris');
+        // Inventaris Aset
+
+        // Status
+            Route::get('/status_distribusi', 'App\Http\Controllers\Transaction\Asset\StatusDistribusiController@index')->name('status_distribusi');
+            Route::get('/getStatusDistribusi', 'App\Http\Controllers\Transaction\Asset\StatusDistribusiController@getStatusDistribusi')->name('getStatusDistribusi');
+            Route::get('/getMasterAssetDistribusi', 'App\Http\Controllers\Transaction\Asset\StatusDistribusiController@getMasterAssetDistribusi')->name('getMasterAssetDistribusi');
+            Route::post('/addDistribusi', 'App\Http\Controllers\Transaction\Asset\StatusDistribusiController@addDistribusi')->name('addDistribusi');
+            Route::post('/startProgressDistribution', 'App\Http\Controllers\Transaction\Asset\StatusDistribusiController@startProgressDistribution')->name('startProgressDistribution');
+            Route::post('/updateDistribusi', 'App\Http\Controllers\Transaction\Asset\StatusDistribusiController@updateDistribusi')->name('updateDistribusi');
+            Route::get('/getDistribusiLog', 'App\Http\Controllers\Transaction\Asset\StatusDistribusiController@getDistribusiLog')->name('getDistribusiLog');
+        // Status
+
+        // Maintenance
+        Route::get('/lap_harwat', 'App\Http\Controllers\Transaction\Asset\LaporanController@index')->name('lap_harwat');
+        Route::get('/getMaintenance', 'App\Http\Controllers\Transaction\Asset\LaporanController@getMaintenance')->name('getMaintenance');
+        
+        // Maintenance
     // Transaction
 });

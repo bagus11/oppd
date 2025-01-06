@@ -13,7 +13,7 @@
   <!-- Core Css -->
   <link rel="stylesheet" href="../assets/css/styles.css" />
 
-  <title>MatDash Bootstrap Admin</title>
+  <title>SISINFO OPPD</title>
 </head>
 
 <body>
@@ -90,7 +90,7 @@
                 </div>
                 <div class="col-lg-7">
                   <h2 class="text-white fs-10 mb-3 lh-base">
-                    SISINFOLOG OPPD
+                    SISINFO OPPD
                   </h2>
                   <span class="opacity-75 fs-4 text-white d-block mb-3">Sistem Informasi Logistik
                     <br />

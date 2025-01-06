@@ -47,6 +47,7 @@ class MenusController extends Controller
                 'icon'          => $request->menus_icon,
                 'permission'    => 'view-'.$request->menus_link,
                 'description'   => $request->menus_description,
+                'order'         => 0,
                 'status'        => 1
             ];
             Menu::create($post);

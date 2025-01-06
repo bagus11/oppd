@@ -1,13 +1,19 @@
 @extends('garage._dashboard')
 @section('content')
 <style>
-   #asset_map_track {
-        height: 500px !important;  /* Ensure this is set */
-        width: 100% !important;    /* Adjust this as necessary */
-        border-radius: 15px;
-        z-index: 0 !important;
-        
-    }
+  .navbar {
+    z-index: 90px !important;
+  }
+  #asset_map_track {
+    height: 100%; /* Match parent height */
+    border-radius: 10px !important;
+    z-index: 0 !important;
+  }
+
+  .row {
+    display: flex; /* Ensure both child elements adjust to each other's height */
+    align-items: stretch; /* Ensure children align to the tallest */
+  }
     #radialChart{
       width: 100% !important;
     }
@@ -42,7 +48,7 @@
                 <div id="asset_map_track"></div>
               </div>
               <div class="col-3">
-                <div class="card">
+                <div class="card" id="total_oppd_card">
                   <div class="card-body rounded-2 p-0 bg-info bg-opacity-10">
                     <div class="mx-4 mt-2">
                       <h5 class="ml-4 card-title">Total OPPD</h5>
@@ -126,7 +132,7 @@
       <!-- ----------------------------------------- -->
       <!-- Revenue Forecast -->
       <!-- ----------------------------------------- -->
-      <div class="col-lg-5">
+      <div class="col-lg-6">
         <div class="card">
           <div class="card-body">
             <div class="row mb-4">
@@ -147,7 +153,7 @@
       <!-- ----------------------------------------- -->
       <!-- Annual Profit -->
       <!-- ----------------------------------------- -->
-      <div class="col-lg-7">
+      <div class="col-lg-6">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title mb-4">Pengajuan Aset</h5>

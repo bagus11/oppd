@@ -89,7 +89,7 @@ chart.render();
     
     
     // Initialize the map
-    const map = L.map('asset_map_track').setView([1.5074, 10.1278], 2);
+    const map = L.map('asset_map_track').setView([1.5074, 10.1278], 3);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
@@ -143,14 +143,30 @@ chart.render();
             data :data
         },
         columns: [
-            { data: 'satgas', name: 'satgas' },
+            { data: 'satgas_relation.name', name: 'satgas_relation.name' },
             { data: 'no_un', name: 'no_un' },
-            { data: 'category', name: 'category' },
-            { data: 'sub_category', name: 'sub_category' },
-            { data: 'type', name: 'type' },
-            { data: 'brand', name: 'brand' },
+            { data: 'category_relation.name', name: 'category_relation.name' },
+            { data: 'sub_category_relation.name', name: 'sub_category_relation.name' },
+            { data: 'type_relation.name', name: 'type_relation.name' },
+            { data: 'merk_relation.name', name: 'merk_relation.name' },
             { data: 'no_mesin', name: 'no_mesin' },
             { data: 'no_rangka', name: 'no_rangka' },
+            {
+                data: 'kondisi',
+                name: 'kondisi',
+                render: function (data) {
+                    switch (data) {
+                        case 0: return '-';
+                        case 1: return 'BAIK';
+                        case 2: return 'RR OPS';
+                        case 3: return 'RB';
+                        case 4: return 'RR TDK OPS';
+                        case 5: return 'M';
+                        case 6: return 'D';
+                        default: return 'Unknown';
+                    }
+                }
+            }
         ]
     });
  })
@@ -163,7 +179,7 @@ $('#select_asset_type').on('change', function(){
     getCallbackNoSwal('assetChartFilter',data, function(response){
         $(document).ready(function () {
             $('#asset_chart').empty(); // Clear the container if needed
-            const labels = response.data.map(item => item.kondisi); // Extract labels
+            const labels = response.data.map(item => item.kondisi_label); // Extract labels
             const seriesData = response.data.map(item => item.total); // Extract numerical data
             const predefinedColors = ['#1E90FF', '#FFD700', '#FF6347', '#32CD32']; // Define colors for each bar
             const options = {
@@ -206,7 +222,7 @@ $('#select_asset_type').on('change', function(){
 getCallbackNoSwal('assetChart', null, function(response){
     $(document).ready(function () {
         $('#asset_chart').empty(); // Clear the container if needed
-        const labels = response.data.map(item => item.kondisi); // Extract labels
+        const labels = response.data.map(item => item.kondisi_label); // Extract labels
         const seriesData = response.data.map(item => item.total); // Extract numerical data
         const predefinedColors = ['#1E90FF', '#FFD700', '#FF6347', '#32CD32']; // Define colors for each bar
         const options = {

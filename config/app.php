@@ -183,6 +183,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        'NumConvert' => 'HnhDigital\LaravelNumberConverter\Facade',
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 

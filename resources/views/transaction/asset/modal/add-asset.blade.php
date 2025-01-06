@@ -20,16 +20,17 @@
                         </div>
                         <div class="col-8">
                             <select name="select_kondisi" class="select2" id="select_kondisi">
-                                <option value="BAIK">BAIK</option>
-                                <option value="RR OPS">RR OPS</option>
-                                <option value="RB">RB</option>
-                                <option value="RR TDK OPS">RR TDK OPS</option>
-                                <option value="M">M</option>
-                                <option value="D">D</option>
+                                <option value="1">BAIK</option>
+                                <option value="2">RR OPS</option>
+                                <option value="3">RB</option>
+                                <option value="4">RR TDK OPS</option>
+                                <option value="5">M</option>
+                                <option value="6">D</option>
                             </select>
                         </div>
                     </div>
                 </div>
+
             </div>
             <div class="modal-footer">
                 <button class="btn btn-sm btn-success" id="btnAddAsset">
