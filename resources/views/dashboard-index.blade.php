@@ -21,6 +21,24 @@
     .select2-container{
         z-index:0 !important;
     }
+    ::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+            }
+
+            ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px hsla(0, 1%, 60%, 0.3);; ; 
+            border-radius: 10px;
+            }
+
+            ::-webkit-scrollbar-thumb {
+            background:hsla(0, 1%, 60%, 0.3);; 
+            border-radius: 10px;
+            }
+
+            ::-webkit-scrollbar-thumb:hover {
+            background:#b2b1b0;
+            }
 </style>
     <div class="row">
       <div class="col-12">
@@ -31,36 +49,140 @@
                 <h5 class="card-title">Summary Asset</h5>
                 <p class="card-subtitle mb-0">Summary Asset OPPD</p>
               </div>
-
-              {{-- <div class="hstack gap-9 mt-4 mt-md-0">
-                <div class="d-flex align-items-center gap-2">
-                  <span class="d-block flex-shrink-0 round-10 bg-primary rounded-circle"></span>
-                  <span class="text-nowrap text-muted">2024</span>
-                </div>
-                <div class="d-flex align-items-center gap-2">
-                  <span class="d-block flex-shrink-0 round-10 bg-danger rounded-circle"></span>
-                  <span class="text-nowrap text-muted">2023</span>
-                </div>
-              </div> --}}
             </div>
             <div class="row">
-              <div class="col-9">
+              <div class="col-12 col-sm-12 col-md-9">
                 <div id="asset_map_track"></div>
               </div>
-              <div class="col-3">
-                <div class="card" id="total_oppd_card">
-                  <div class="card-body rounded-2 p-0 bg-info bg-opacity-10">
-                    <div class="mx-4 mt-2">
-                      <h5 class="ml-4 card-title">Total OPPD</h5>
-                      <p class="ml-4 card-subtitle mb-0">Berdasarkan kondisi</p>
+
+              <div class="col-12 col-sm-12 col-md-3">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="card">
+                        <div class="card-header p-2 bg-danger bg-opacity-10" style="border-radius-top-left:10px; border-radius-top-right:10px">
+                          <div class="row">
+                            <div class="col-2">
+                              <strong style="font-size:17px; color:black"><i class="fa-solid fa-bullhorn pr-4"></i> </strong>
+                            </div>
+                            <div class="col-8">
+                              <strong style="font-size:17px;margin-left:5px;color:black; font-weight:bold">Hot News</strong>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-body rounded-2 p-0 bg-opacity-10" style="overflow-y: auto; height:250px" >
+                            <a href="javascript:void(0)"
+                                class="py-6 d-flex align-items-center dropdown-item gap-3">
+                                <span
+                                    class="flex-shrink-0 bg-danger-subtle rounded-circle round d-flex align-items-center justify-content-center fs-6 text-dark">
+                                    <iconify-icon icon="solar:widget-3-line-duotone"></iconify-icon>
+                                </span>
+                                <div class="w-75">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <h6 class="mb-1 fw-semibold">Siap Tugas Misi Perdamaian</h6>
+                                    </div>
+                                    <span class="d-block text-truncate text-truncate fs-11"> 
+                                      <i class="fa-solid fa-calendar-days"></i> <strong style="margin-left: 5px; font-weight:200"> 1 Jan 2025 </strong>
+                                    </span>
+                                </div>
+                            </a>
+                              <a href="javascript:void(0)"
+                                  class="py-6 d-flex align-items-center dropdown-item gap-3">
+                                  <span
+                                      class="flex-shrink-0 bg-primary-subtle rounded-circle round d-flex align-items-center justify-content-center fs-6 text-dark">
+                                      <iconify-icon icon="solar:widget-3-line-duotone"></iconify-icon>
+                                  </span>
+                                  <div class="w-75">
+                                      <div class="d-flex align-items-center justify-content-between">
+                                          <h6 class="mb-1 fw-semibold">DANKORMAR Hadiri Pelepasan Satgas</h6>
+                                      </div>
+                                      <span class="d-block text-truncate text-truncate fs-11"> 
+                                        <i class="fa-solid fa-calendar-days"></i> <strong style="margin-left: 5px; font-weight:200"> 1 Jan 2025 </strong>
+                                      </span>
+                                  </div>
+                              </a>
+                            <a href="javascript:void(0)"
+                                class="py-6 d-flex align-items-center dropdown-item gap-3">
+                                <span
+                                    class="flex-shrink-0 bg-info-subtle rounded-circle round d-flex align-items-center justify-content-center fs-6 text-dark">
+                                    <iconify-icon icon="solar:widget-3-line-duotone"></iconify-icon>
+                                </span>
+                                <div class="w-75">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <h6 class="mb-1 fw-semibold">Panglima TNI Tinjau Persiapan Satgas</h6>
+                                    </div>
+                                    <span class="d-block text-truncate text-truncate fs-11"> 
+                                      <i class="fa-solid fa-calendar-days"></i> <strong style="margin-left: 5px; font-weight:200"> 1 Jan 2025 </strong>
+                                    </span>
+                                </div>
+                            </a>
+                                <a href="javascript:void(0)"
+                                    class="py-6 d-flex align-items-center dropdown-item gap-3">
+                                    <span
+                                        class="flex-shrink-0 bg-warning-subtle rounded-circle round d-flex align-items-center justify-content-center fs-6 text-dark">
+                                        <iconify-icon icon="solar:widget-3-line-duotone"></iconify-icon>
+                                    </span>
+                                    <div class="w-75">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <h6 class="mb-1 fw-semibold">Tuntaskan Misi di Lebanon</h6>
+                                          
+                                        </div>
+                                        <span class="d-block text-truncate text-truncate fs-11"> 
+                                          <i class="fa-solid fa-calendar-days"></i> <strong style="margin-left: 5px; font-weight:200"> 2 Jan 2025 </strong>
+                                        </span>
+                                    </div>
+                                </a>
+                            <a href="javascript:void(0)"
+                                class="py-6 d-flex align-items-center dropdown-item gap-3">
+                                <span
+                                    class="flex-shrink-0 bg-danger-subtle rounded-circle round d-flex align-items-center justify-content-center fs-6 text-dark">
+                                    <iconify-icon icon="solar:widget-3-line-duotone"></iconify-icon>
+                                </span>
+                                <div class="w-75">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <h6 class="mb-1 fw-semibold">Launch Admin</h6>
+                                        <span class="d-block fs-2">9:30 AM</span>
+                                    </div>
+                                    <span class="d-block text-truncate text-truncate fs-11">Just
+                                        see the my new admin!</span>
+                                </div>
+                            </a>
+                        
+                                <a href="javascript:void(0)"
+                                    class="py-6 d-flex align-items-center dropdown-item gap-3">
+                                    <span
+                                        class="flex-shrink-0 bg-danger-subtle rounded-circle round d-flex align-items-center justify-content-center fs-6 text-dark">
+                                        <iconify-icon icon="solar:widget-3-line-duotone"></iconify-icon>
+                                    </span>
+                                    <div class="w-75">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <h6 class="mb-1 fw-semibold">Launch Admin</h6>
+                                            <span class="d-block fs-2">9:30 AM</span>
+                                        </div>
+                                        <span class="d-block text-truncate text-truncate fs-11">Just
+                                            see the my new admin!</span>
+                                    </div>
+                                </a>
+                          
+                          
+                        </div>
+                      </div>
                     </div>
-                    <div id="radialChart"></div>
-                    <div class="row mx-2 mb-2" id="country_list">
-                      
+
+                    <div class="col-12">
+                      <div class="card  p-0" id="total_oppd_card">
+                        <div class="card-body rounded-2 p-0 bg-info bg-opacity-10">
+                          <div class="mx-4 mt-2">
+                            <h5 class="ml-4 card-title">Summary OPPD</h5>
+                            {{-- <p class="ml-4 card-subtitle mb-0">Berdasarkan kondisi</p> --}}
+                          </div>
+                          <div class="p-0" style="padding:0 !important" id="radialChart"></div>
+                        </div>
+                      </div>
                     </div>
+                   
                   </div>
-                </div>
               </div>
+
             </div>
           </div>
         </div>

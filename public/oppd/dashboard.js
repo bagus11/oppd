@@ -19,7 +19,7 @@ const options = {
     series: percentageData, // Use percentage data for radial bars
     chart: {
         type: 'radialBar',
-        height: 350, // Set height explicitly
+        height: 300, // Set height explicitly
         width: '100%', // Set width to 100%
     },
     plotOptions: {
@@ -97,32 +97,42 @@ chart.render();
     // Add markers to the map
     const bounds = [];
     response.country.forEach(country => {
-        const { x: lat, y: lng, name, total } = country;
-        if (lat && lng) {
-            L.marker([lat, lng]).addTo(map)
-                .bindPopup(`<b>${country.country}</b><br>Total: ${total}`);
+        const bounds = [];
+        response.country.forEach(country => {
+          const { x: lat, y: lng, name, total } = country;
+          if (lat && lng) {
+            const marker = L.marker([lat, lng]).addTo(map)
+              .bindPopup(`
+                     <b style="text-transform:uppercase; color :#344CB7">${country.country}</b>
+                    <br>CIMIC UNIFIL
+                    <br> <i class="fa-solid fa-box"></i> Total Asset: 62
+                    <br> <i class="fa-solid fa-user"></i> Total Personil: 70
+                
+                `);
+            marker.openPopup(); // Open the popup immediately
             bounds.push([lat, lng]);
-        }
+          }
+        });
     });
-
+   
     // Fit map to bounds if markers exist
     // if (bounds.length > 0) {
     //     map.fitBounds(bounds);
     // }
-    $('#country_list').empty()
-    var countryList = ''
-    for(i = 0; i < response.country.length ; i++){
-        countryList +=`
-            <div class="col-7">
-               <label> ${response.country[i].country} </label>
-            </div>
-            <div class="col-5">
-                   <label> : ${response.country[i].total} <label>
-            </div>
-        `
-    }
-    // console.log(response.country[i])
-    $('#country_list').html(countryList)
+    // $('#country_list').empty()
+    // var countryList = ''
+    // for(i = 0; i < response.country.length ; i++){
+    //     countryList +=`
+    //         <div class="col-7">
+    //            <label> ${response.country[i].country} </label>
+    //         </div>
+    //         <div class="col-5">
+    //                <label> : ${response.country[i].total} <label>
+    //         </div>
+    //     `
+    // }
+    // // console.log(response.country[i])
+    // $('#country_list').html(countryList)
 
 });
 

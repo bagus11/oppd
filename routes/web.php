@@ -134,6 +134,7 @@ Route::group(['middleware' => 'auth'], function () {
         // Maintenance
         Route::get('/lap_harwat', 'App\Http\Controllers\Transaction\Asset\LaporanController@index')->name('lap_harwat');
         Route::get('/getMaintenance', 'App\Http\Controllers\Transaction\Asset\LaporanController@getMaintenance')->name('getMaintenance');
+        Route::get('/getAssetMaintenance', 'App\Http\Controllers\Transaction\Asset\LaporanController@getAssetMaintenance')->name('getAssetMaintenance');
         
         // Maintenance
     // Transaction

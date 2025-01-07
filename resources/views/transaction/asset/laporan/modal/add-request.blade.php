@@ -33,14 +33,44 @@
                                 </div>
                             </div>
                             <div class="row mt-2">
-                                <div class="col-5 col-sm-5 col-md-2 mt-2">
-                                    <label for="select_asset">Asset Product</label>
+                                <div class="col-12">
+                                    <div class="table-responsive" style="overflow-y: hidden">
+                                        <table id="asset_table" class="table table-striped table-bordered text-nowrap">
+                                            <thead class="text-dark fs-1">
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Kondisi</th>
+                                                    <th>Satgas</th>
+                                                    <th>No UN</th>
+                                                    <th>Kategori</th>
+                                                    <th>Sub Kategori</th>
+                                                    <th>Jenis</th>
+                                                    <th>Merk</th>
+                                                    <th>No Mesin</th>
+                                                    <th>No Rangka</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
                                 </div>
-                                <div class="col-7 col-sm-7 col-md-4">
-                                    <select name="select_asset" class="select2" id="select_asset"></select>
-                                    <input type="hidden" class="form-control" id="asset">
-                                    <span class="message_error asset_error text-red d-block"></span>
+                            </div>
+                            <div class="row mt-2" id="array_table_request">
+                                <div class="col-12">
+                                    <div class="table-responsive" style="overflow-y: hidden">
+                                        <table id="asset_array_table" class="table table-striped table-bordered text-nowrap">
+                                            <thead class="text-dark fs-1">
+                                                <tr>
+                                                    <th>Asset Code</th>
+                                                    <th>Satgas</th>
+                                                    <th>Kondisi</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="row mt-2">
                                 <div class="col-5 col-sm-5 col-md-2 mt-2">
                                     <label for="select_asset">Attachment</label>
                                 </div>
@@ -59,75 +89,9 @@
                                 </div>
                             </div>
                         </fieldset>
-    
-                        <fieldset class="mt-4 container_label">
-                            <legend>Detail Asset</legend>
-                            <div class="row mt-2">
-                                <div class="col-5 col-sm-5 col-md-2">
-                                    <label for="label_asset_code">Asset Code</label>
-                                </div>
-                                <div class="col-7 col-sm-7 col-md-4">
-                                    <label id="label_asset_code"></label>
-                                </div>
-                                <div class="col-5 col-sm-5 col-md-2">
-                                    <label for="label_no_un">No UN</label>
-                                </div>
-                                <div class="col-7 col-sm-7 col-md-4">
-                                    <label id="label_no_un"></label>
-                                </div>
-                                {{-- <div class="col-5 col-sm-5 col-md-2">
-                                    <label for="label_satgas">Satgas</label>
-                                </div>
-                                <div class="col-7 col-sm-7 col-md-4">
-                                    <label id="label_satgas"></label>
-                                </div> --}}
-                                <div class="col-5 col-sm-5 col-md-2">
-                                    <label for="label_no_rangka">No Rangka</label>
-                                </div>
-                                <div class="col-7 col-sm-7 col-md-4">
-                                    <label id="label_no_rangka"></label>
-                                </div>
-                                <div class="col-5 col-sm-5 col-md-2">
-                                    <label for="label_no_mesin">No Mesin</label>
-                                </div>
-                                <div class="col-7 col-sm-7 col-md-4">
-                                    <label id="label_no_mesin"></label>
-                                </div>
-                                <div class="col-5 col-sm-5 col-md-2">
-                                    <label for="label_kategori">Kategori</label>
-                                </div>
-                                <div class="col-7 col-sm-7 col-md-4">
-                                    <label id="label_kategori"></label>
-                                </div>
-                                <div class="col-5 col-sm-5 col-md-2">
-                                    <label for="label_sub_kategori">Sub Kategori</label>
-                                </div>
-                                <div class="col-7 col-sm-7 col-md-4">
-                                    <label id="label_sub_kategori"></label>
-                                </div>
-                                <div class="col-5 col-sm-5 col-md-2">
-                                    <label for="label_jenis">Jenis</label>
-                                </div>
-                                <div class="col-7 col-sm-7 col-md-4">
-                                    <label id="label_jenis"></label>
-                                </div>
-                                <div class="col-5 col-sm-5 col-md-2">
-                                    <label for="label_merk">Merk</label>
-                                </div>
-                                <div class="col-7 col-sm-7 col-md-4">
-                                    <label id="label_merk"></label>
-                                </div>
-                                <div class="col-5 col-sm-5 col-md-2">
-                                    <label for="">Kondisi</label>
-                                </div>
-                                <div class="col-7 col-sm-7 col-md-4">
-                                    <label for="" id="label_kondisi"></label>
-                                </div>
-                            </div>
-                        </fieldset>
                     </div>
                 </div>
-                <div class="modal-footer container_label">
+                <div class="modal-footer">
                     <button class="btn btn-sm btn-success" type="submit" id="btn_save_request">
                         <i class="fas fa-check"></i>
                     </button>

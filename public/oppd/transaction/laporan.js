@@ -50,11 +50,7 @@ $(document).ready(function() {
         // Reset form and hide container labels
         $('#form_serialize')[0].reset(); // Use [0] to access the DOM element for reset
         $('.container_label').prop('hidden', true);
-
-        // Populate the Reporter dropdown
         getActiveItems('getUser', null, 'select_reporter', 'Reporter');
-
-        // Populate the Asset dropdown
         getCallbackNoSwal('getMasterAsset', null, function(response) {
             if (response && response.data) {
                 var selectAssetOptions = '<option value="">Pilih Asset</option>';
@@ -70,50 +66,111 @@ $(document).ready(function() {
                 console.error('Invalid response for getMasterAsset:', response);
             }
         });
-
-        // Handle Asset selection change
-        $('#select_asset').off('change').on('change', function() {
-            var assetCode = $(this).val();
-            if (!assetCode) {
-                console.warn('No asset selected.');
-                return;
-            }
-
-            var data = { asset_code: assetCode };
-            getCallbackNoSwal('getDetailAsset', data, function(response) {
-                if (response && response.detail) {
-                    $('.container_label').prop('hidden', false);
-
-                    var kondisi;
-                    switch (response.detail.kondisi) {
-                        case 0: kondisi = '-'; break;
-                        case 1: kondisi = 'BAIK'; break;
-                        case 2: kondisi = 'RR OPS'; break;
-                        case 3: kondisi = 'RB'; break;
-                        case 4: kondisi = 'RR TDK OPS'; break;
-                        case 5: kondisi = 'M'; break;
-                        case 6: kondisi = 'D'; break;
-                        default: kondisi = 'Unknown';
+        $('#asset_table').DataTable().clear().destroy();
+        $('#asset_table').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: {
+                url: `getAssetMaintenance`,
+                type: 'GET',
+            },
+            columns: [
+                {
+                    data: null, // No data binding for checkbox column
+                    orderable: false, // Disable ordering for this column
+                    searchable: false, // Disable searching for this column
+                    render: function(data, type, row) {
+                        return `<input type="checkbox" class="row-checkbox" value="${row.asset_code}">`; // Replace `row.id` with the appropriate unique identifier
                     }
-
-                    $('#label_asset_code').text(`: ${response.detail.asset_code}`);
-                    $('#label_no_un').text(`: ${response.detail.no_un}`);
-                    $('#label_no_rangka').text(`: ${response.detail.no_rangka}`);
-                    $('#label_no_mesin').text(`: ${response.detail.no_mesin}`);
-                    $('#label_kategori').text(`: ${response.detail.category_relation.name}`);
-                    $('#label_sub_kategori').text(`: ${response.detail.sub_category_relation.name}`);
-                    $('#label_merk').text(`: ${response.detail.merk_relation.name}`);
-                    $('#label_jenis').text(`: ${response.detail.type_relation.name}`);
-                    $('#label_kondisi').text(`: ${kondisi}`);
-                } else {
-                    console.error('Invalid response for getDetailAsset:', response);
-                }
-            });
-
-            // Attach onChange handlers
-            onChange('select_reporter', 'reporter');
-            onChange('select_asset', 'asset');
-            onChange('select_type', 'type');
+                },
+                {
+                    data: 'kondisi',
+                    name: 'kondisi',
+                    render: function (data) {
+                        switch (data) {
+                            case 0: return '-';
+                            case 1: return 'BAIK';
+                            case 2: return 'RR OPS';
+                            case 3: return 'RB';
+                            case 4: return 'RR TDK OPS';
+                            case 5: return 'M';
+                            case 6: return 'D';
+                            default: return 'Unknown';
+                        }
+                    }
+                },
+                { data: 'satgas_relation.name', name: 'satgas_relation.name' },
+                { data: 'no_un', name: 'no_un' },
+                { data: 'category_relation.name', name: 'category_relation.name' },
+                { data: 'sub_category_relation.name', name: 'sub_category_relation.name' },
+                { data: 'type_relation.name', name: 'type_relation.name' },
+                { data: 'merk_relation.name', name: 'merk_relation.name' },
+                { data: 'no_mesin', name: 'no_mesin' },
+                { data: 'no_rangka', name: 'no_rangka' },
+              
+            ]
         });
+    });
+});
+$(document).ready(function () {
+    const tableArray = $('#asset_array_table').DataTable({
+        columns: [
+            { data: 'asset_code', title: 'Asset Code' },
+            { data: 'satgas_name', title: 'Satgas' },
+            {
+                data: 'kondisi',
+                name: 'kondisi',
+                render: function (data) {
+                    switch (data) {
+                        case 0: return '-';
+                        case 1: return 'BAIK';
+                        case 2: return 'RR OPS';
+                        case 3: return 'RB';
+                        case 4: return 'RR TDK OPS';
+                        case 5: return 'M';
+                        case 6: return 'D';
+                        default: return 'Unknown';
+                    }
+                }
+            },
+            {
+                data: null,
+                title: 'Action',
+                orderable: false,
+                render: function (data, type, row) {
+                    return `<button class="btn btn-danger btn-sm remove-row" style="text-align:center" data-id="${row.asset_code}">
+                       <i class="fa-solid fa-circle-xmark"></i>
+                    </button>`;
+                }
+            }
+        ]
+    });
+
+    // Add row to table_array when checkbox is checked
+    $('#asset_table').on('change', '.row-checkbox', function () {
+        const isChecked = $(this).is(':checked');
+        const row = $(this).closest('tr');
+        const rowData = $('#asset_table').DataTable().row(row).data();
+        console.log(rowData)
+        if (isChecked) {
+            // Add row data to tableArray
+            tableArray.row.add({
+                asset_code: rowData.asset_code,
+                satgas_name: rowData.satgas_relation.name, // Use a valid key name here
+                kondisi: rowData.kondisi,
+            }).draw();
+        } else {
+            // Remove row from tableArray
+            tableArray.rows((idx, data) => data.asset_code === rowData.asset_code).remove().draw();
+        }
+    });
+
+    // Remove row from tableArray when "Remove" button is clicked
+    $('#asset_array_table').on('click', '.remove-row', function () {
+        const assetCode = $(this).data('id');
+        tableArray.rows((idx, data) => data.asset_code === assetCode).remove().draw();
+
+        // Uncheck the corresponding checkbox in the main table
+        $(`.row-checkbox[value="${assetCode}"]`).prop('checked', false);
     });
 });
