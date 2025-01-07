@@ -11,7 +11,7 @@ getCallbackNoSwal('getCountingAsset', null, function(response) {
     response.group.forEach(group => {
         $('#select_asset_type').append(`<option value="${group.type}">${group.type}</option>`);
     });
-
+console.log('test')
 // Calculate total and percentages
 const total = response.data.reduce((a, b) => a + b, 0); // Sum of original data
 const percentageData = response.data.map(value => ((value / total) * 100).toFixed(2)); // Convert to percentage and round to 2 decimals
